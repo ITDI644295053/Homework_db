@@ -50,8 +50,8 @@ $insertcar = "INSERT INTO cars(brand,color,regis,price,photo)VALUE('$brand','$co
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Car Shop</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Cars</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Product</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="showcar.php">Car</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="regiscar.php">Add Car</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Expense</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Setting</a>
                 </div>
@@ -82,20 +82,16 @@ $insertcar = "INSERT INTO cars(brand,color,regis,price,photo)VALUE('$brand','$co
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <p class="mt-4"><?php
+                    <p class="mt-4">
+                        <?php
                             if (mysqli_query($conn, $insertcar)) {
-                                //echo "New record created successfully"; 
-                                $carquery = "SELECT * FROM cars";
-                                $cars = mysqli_query($conn,$carquery);//ดึงข้อมูล cars มาไว้ในตัวแปร
-                                while($row = mysqli_fetch_assoc($cars)) {
-                                echo '<img src="'.$row["photo"].'"width="140">';
-                                echo "Car id : " . $row["car_id"]. " Brand : " . $row["brand"]. " " . " Color : " . $row["color"]. " Registration : " . $row["regis"]. " Price : " . $row["price"]."<br><td><tr>";
-                                echo "<br>";}
+                                echo "<h2>Add car successfully</h2>"; 
                             } else {
                                 echo "Error: " . $insertcar . "<br>" . mysqli_error($conn);
                              }
 
-                            ?></p>
+                            ?>
+                        </p>
                     
                    
                 </div>
@@ -110,3 +106,4 @@ $insertcar = "INSERT INTO cars(brand,color,regis,price,photo)VALUE('$brand','$co
     mysqli_close($conn);
     ?>
 </html>
+
